@@ -308,4 +308,5 @@
         </property>
     </bean>
 
+		<bean id="springContext" class="org.auscope.portal.server.wps.SpringContext"/>
 </beans>

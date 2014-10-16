@@ -139,8 +139,9 @@
 			<Property name="Algorithm" active="true">org.n52.wps.server.algorithm.test.MultiReferenceInputAlgorithm</Property>
 			<Property name="Algorithm" active="true">org.n52.wps.server.algorithm.test.MultiReferenceBinaryInputAlgorithm</Property>
  -->
- 		<Property name="Algorithm" active="true">org.n52.wps.server.algorithm.test.EchoProcess</Property>
-		</Repository>
+ 					<Property name="Algorithm" active="true">org.n52.wps.server.algorithm.test.EchoProcess</Property>
+ 					<Property name="Algorithm" active="true">org.auscope.portal.server.wps.JobListProcess</Property>
+ 				</Repository>
 		<Repository name="UploadedAlgorithmRepository"
 			className="org.n52.wps.server.UploadedAlgorithmRepository" active="false">
 		</Repository>
