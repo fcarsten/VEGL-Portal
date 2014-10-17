@@ -10,7 +10,6 @@ import org.auscope.portal.server.vegl.*;
 import org.n52.wps.algorithm.annotation.*;
 import org.n52.wps.server.*;
 import org.slf4j.*;
-import org.springframework.security.core.userdetails.*;
 
 /**
  * @author fri096
