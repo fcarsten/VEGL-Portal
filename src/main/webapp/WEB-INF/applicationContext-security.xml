@@ -9,6 +9,7 @@
                              http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
    <http entry-point-ref="oAuth2EntryPoint">
+        <intercept-url pattern="/wps/*" access="ROLE_USER"/>
         <intercept-url pattern="/gridsubmit.html" access="ROLE_USER"/>
         <intercept-url pattern="/jobbuilder.html" access="ROLE_USER"/>
         <intercept-url pattern="/login.html" access="ROLE_USER"/>

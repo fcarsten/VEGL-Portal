@@ -5,10 +5,12 @@ package org.auscope.portal.server.wps;
 
 import java.util.*;
 
+import org.auscope.portal.core.server.security.oauth2.*;
 import org.auscope.portal.server.vegl.*;
 import org.n52.wps.algorithm.annotation.*;
 import org.n52.wps.server.*;
 import org.slf4j.*;
+import org.springframework.security.core.userdetails.*;
 
 /**
  * @author fri096
@@ -28,27 +30,16 @@ public class JobListProcess extends AbstractAnnotatedAlgorithm {
 
     @Execute
     public void listJobs() {
-
-        String email = literalInput.get(0);
+        PortalUser activeUser = (PortalUser) AuthenticatedExecuteRequest.currentUser.get();
+        log.info("User: "+activeUser);
+        String email = activeUser.getEmail();
 
         List<VEGLSeries> series = SpringContext.getJobManager().querySeries(email, null, null);
-
+        literalOutput="";
         for (VEGLSeries veglSeries : series) {
             literalOutput+= veglSeries.toString()+"\n";
         }
 
-//        log.debug("Running echo process");
-//
-//        if (complexInput != null && complexInput.size() > 0)
-//            complexOutput = complexInput.get(0);
-//        else
-//            log.debug("No complex inputs.");
-//
-//        if (literalInput != null && literalInput.size() > 0)
-//            literalOutput = literalInput.get(0);
-//        else
-//            log.debug("No literal input");
-//
         log.debug("Finished list series : {}", literalOutput);
     }
 
@@ -67,10 +58,10 @@ public class JobListProcess extends AbstractAnnotatedAlgorithm {
 //        this.complexInput = complexInput;
 //    }
 
-    @LiteralDataInput(identifier = "email", minOccurs = 0, maxOccurs = 1)
-    public void setLiteralInput(List<String> literalInput) {
-        this.literalInput = literalInput;
-    }
+//    @LiteralDataInput(identifier = "email", minOccurs = 0, maxOccurs = 1)
+//    public void setLiteralInput(List<String> literalInput) {
+//        this.literalInput = literalInput;
+//    }
 
 
 }

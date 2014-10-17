@@ -30,19 +30,15 @@ package org.n52.wps.server.algorithm.test;
  */
 
 
-import java.util.List;
+import java.util.*;
 
-import org.apache.xmlbeans.XmlObject;
-import org.n52.wps.algorithm.annotation.Algorithm;
-import org.n52.wps.algorithm.annotation.ComplexDataInput;
-import org.n52.wps.algorithm.annotation.ComplexDataOutput;
-import org.n52.wps.algorithm.annotation.Execute;
-import org.n52.wps.algorithm.annotation.LiteralDataInput;
-import org.n52.wps.algorithm.annotation.LiteralDataOutput;
-import org.n52.wps.io.data.binding.complex.GenericXMLDataBinding;
-import org.n52.wps.server.AbstractAnnotatedAlgorithm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.xmlbeans.*;
+import org.auscope.portal.server.wps.*;
+import org.n52.wps.algorithm.annotation.*;
+import org.n52.wps.io.data.binding.complex.*;
+import org.n52.wps.server.*;
+import org.slf4j.*;
+import org.springframework.security.core.userdetails.*;
 
 @Algorithm(version = "1.0.0", title = "Echo process", abstrakt = "A simple echo process for complex and literal data - get what you give.")
 public class EchoProcess extends AbstractAnnotatedAlgorithm {
@@ -58,6 +54,8 @@ public class EchoProcess extends AbstractAnnotatedAlgorithm {
     @Execute
     public void echo() {
         log.debug("Running echo process");
+        User activeUser = AuthenticatedExecuteRequest.currentUser.get();
+        log.info("User: "+activeUser);
 
         if (complexInput != null && complexInput.size() > 0)
             complexOutput = complexInput.get(0);

@@ -62,7 +62,7 @@
 
    	<servlet>
 		<servlet-name>wpsServlet</servlet-name>
-		<servlet-class>org.n52.wps.server.WebProcessingService</servlet-class>
+		<servlet-class>org.auscope.portal.server.wps.WebProcessingService</servlet-class>
 		<load-on-startup>0</load-on-startup>
 		<init-param>
 			<param-name>wps.config.file</param-name>
